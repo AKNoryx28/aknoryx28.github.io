@@ -1,3 +1,14 @@
+let cc = 0
+
 function Increment() {
-    document.getElementById("counter-el").innerText++
+    if (cc >= 0) {
+        cc++
+    }
+    document.getElementById("count-el").innerText = cc
+}
+function Decrement() {
+    if (cc >= 1) {
+        cc--
+    }
+    document.getElementById("count-el").innerText = cc
 }
