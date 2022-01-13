@@ -1,3 +1,84 @@
-<html title="AKNoryx28">
-	<h1>Hello, World</h1>
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <script>
+        // Function generate random color
+        function ran_color() {
+            return '#' + Math.floor(Math.random() * 16777215).toString(16);
+        }
+
+        // Toggles visibility of greeting
+        function blink() {
+            let body = document.querySelector('#hello');
+            if (body.style.visibility == 'hidden') {
+                body.style.color = ran_color();
+                body.style.visibility = 'visible';
+            } else {
+                body.style.visibility = 'hidden';
+            }
+        }
+
+        // Blink every 500ms
+        window.setInterval(blink, 500);
+    </script>
+    <title>Hello, Title</title>
+</head>
+
+<body>
+    <h1 id="hello">Hello, World!</h1>
+    <div>
+        <button id="red">R</button>
+        <button id="green">G</button>
+        <button id="blue">B</button>
+    </div>
+    <form>
+        <input type="text" autocomplete="off" autofocus id="name" placeholder="Name">
+        <input type="submit">
+    </form>
+
+    <input id="input" type="text" autocomplete="off" autofocus placeholder="Autocomplete">
+    <ul></ul>
+
+</body>
+<script src="https://raw.githubusercontent.com/cs50/lectures/2021/fall/8/src8/large.js"></script>
+<script>
+    navigator.geolocation.getCurrentPosition(function(position) {
+        document.write(position.coords.latitude + ", " + position.coords.longitude);
+    });
+
+    document.querySelector('form').addEventListener('submit', function(e) {
+        var name = document.getElementById('name').value;
+        document.getElementById('hello').innerHTML = 'Hello, ' + name + '!';
+        alert("Hello, " + name);
+        e.preventDefault();
+    });
+
+    document.querySelector('#red').addEventListener('click', function() {
+        document.body.style.backgroundColor = 'red';
+    });
+
+    document.querySelector('#green').addEventListener('click', function() {
+        document.body.style.backgroundColor = 'green';
+    });
+
+    document.querySelector('#blue').addEventListener('click', function() {
+        document.body.style.backgroundColor = 'blue';
+    });
+
+    var input = document.querySelector('#input');
+    input.addEventListener('keyup', function(event) {
+        var html = '';
+        if (input.value) {
+            for (word of WORDS) {
+                if (word.startsWith(input.value)) {
+                    html += `<li>${word}</li>`;
+                }
+            }
+        }
+        document.querySelector('ul').innerHTML = html;
+    });
+</script>
+
 </html>
